@@ -64,7 +64,6 @@
                     "clear_coat": 0.0,
                     "clear_coat_gloss": 0.5,
                     "eta": 1.5,
-                    "name": "disney1",
                     "type": "disney"
                 },
                 "transform": {
@@ -80,23 +79,22 @@
                 "file": "models/bunny.obj",
                 "material": {
                     "base_color": [
-                        0.25,
-                        0.83,
-                        0.36
+                        0.5,
+                        0.9,
+                        0.84
                     ],
                     "specular_transmission": 0.0,
-                    "metallic": 0.8,
-                    "subsurface": 0.5,
-                    "specular": 0.5,
-                    "roughness": 0.5,
+                    "metallic": 0.4,
+                    "subsurface": 1.0,
+                    "specular": 1.0,
+                    "roughness": 0.1,
                     "specular_tint": 0.5,
-                    "anisotropic": 0.0,
-                    "sheen": 0.0,
+                    "anisotropic": 0.1,
+                    "sheen": 0.5,
                     "sheen_tint": 0.5,
-                    "clear_coat": 1.0,
+                    "clear_coat": 0.5,
                     "clear_coat_gloss": 0.5,
                     "eta": 1.5,
-                    "name": "disney2",
                     "type": "disney"
                 },
                 "transform": {
@@ -112,9 +110,9 @@
                 "file": "models/bunny.obj",
                 "material": {
                     "base_color": [
-                        0.75,
-                        0.83,
-                        0.46
+                        0.9,
+                        0.2,
+                        0.3
                     ],
                     "specular_transmission": 0.0,
                     "metallic": 0.1,
@@ -122,13 +120,12 @@
                     "specular": 0.5,
                     "roughness": 0.5,
                     "specular_tint": 0.5,
-                    "anisotropic": 0.0,
-                    "sheen": 1.0,
+                    "anisotropic": 0.1,
+                    "sheen": 0.5,
                     "sheen_tint": 0.5,
                     "clear_coat": 0.5,
                     "clear_coat_gloss": 0.5,
                     "eta": 1.5,
-                    "name": "disney3",
                     "type": "disney"
                 },
                 "transform": {
