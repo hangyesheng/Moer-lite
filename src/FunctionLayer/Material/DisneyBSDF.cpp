@@ -224,9 +224,9 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyClearCoat& disneyBX
     double roughness = disneyBXDF.clearCoatGloss;
     double alphaG = (1 - roughness) * 0.1 + roughness * 0.001;
     double alphaG2 = alphaG * alphaG;
-    double cosTheta = sqrt((1 - pow(alphaG2, 1 - sample.x())) / (1 - alphaG2));
+    double cosTheta = sqrt((1 - pow(alphaG2, 1 - sample[0])) / (1 - alphaG2));
     double sinTheta = sqrt(1 - cosTheta * cosTheta);
-    double phi = sample.y() * M_PI * 2;
+    double phi = sample[1] * M_PI * 2;
     Vector3f wh = Vector3f(sinTheta * cos(phi), sinTheta * sin(phi), cosTheta);
 
     Vector3f in = normalize(-out + 2 * (dot(out, wh)) * wh);

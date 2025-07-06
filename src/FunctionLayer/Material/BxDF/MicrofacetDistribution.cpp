@@ -30,8 +30,8 @@ double GGXDistribution::roughnessToAlpha(double roughness) const {
 }
 
 double GGXDistribution::D(const Vector3f& wh, const Vector2f& alphaXY) const {
-    double alphaX = alphaXY.x();
-    double alphaY = alphaXY.y();
+    double alphaX = alphaXY[0];
+    double alphaY = alphaXY[1];
     double ax2 = alphaX * alphaX;
     double ay2 = alphaY * alphaY;
     Vector3f wh2 = wh * wh;
@@ -40,8 +40,8 @@ double GGXDistribution::D(const Vector3f& wh, const Vector2f& alphaXY) const {
 }
 
 double GGXDistribution::Lambda(const Vector3f& w, const Vector2f& alphaXY) const {
-    double ax2 = alphaXY.x() * alphaXY.x();
-    double ay2 = alphaXY.y() * alphaXY.y();
+    double ax2 = alphaXY[0] * alphaXY[0];
+    double ay2 = alphaXY[1] * alphaXY[1];
     Vector3f v2 = w * w;
     double Lambda = (-1 + sqrt(1 + (v2.x() * ax2 + v2.y() * ay2) / v2.z())) / 2;
     return Lambda;
@@ -52,7 +52,7 @@ Vector3f GGXDistribution::Sample_wh(const Vector3f& wo, Vector2f u, const Vector
         std::max(0.01f, std::min(0.99f, u.x())),
         std::max(0.01f, std::min(0.99f, u.y()))
     );
-    double alphaX = alphaXY.x(), alphaY = alphaXY.y();
+    double alphaX = alphaXY[0], alphaY = alphaXY[1];
     if (CosTheta(wo) < 0) {
         return Sample_wh(-wo, u, alphaXY);
     }
