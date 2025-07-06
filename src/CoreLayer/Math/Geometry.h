@@ -14,58 +14,62 @@ public:
   Vector3f(float _x, float _y, float _z) : xyz(_x, _y, _z) {}
 
   //* 加法重载
-  Vector3f operator+(const Vector3f &rhs) const {
+  Vector3f operator+(const Vector3f& rhs) const {
     return Vector3f(xyz + rhs.xyz);
   }
-  Vector3f &operator+=(const Vector3f &rhs) {
+  Vector3f& operator+=(const Vector3f& rhs) {
     xyz += rhs.xyz;
     return *this;
   }
 
   //* 减法重载
-  Vector3f operator-(const Vector3f &rhs) const {
+  Vector3f operator-(const Vector3f& rhs) const {
     return Vector3f(xyz - rhs.xyz);
   }
-  Vector3f &operator-=(const Vector3f &rhs) {
+  Vector3f& operator-=(const Vector3f& rhs) {
     xyz -= rhs.xyz;
     return *this;
   }
 
   //* 与标量相乘
   Vector3f operator*(float f) const { return Vector3f(xyz * f); }
-  Vector3f &operator*=(float f) {
+  Vector3f& operator*=(float f) {
     xyz *= f;
     return *this;
   }
 
   //* 与标量相除
   Vector3f operator/(float f) const { return Vector3f(xyz / f); }
-  Vector3f &operator/=(float f) {
+  Vector3f& operator/=(float f) {
     xyz /= f;
     return *this;
   }
 
   //* 两个向量按位相乘
   //! 如果想要计算点乘，使用dot(Vector3f, Vector3f)函数
-  Vector3f operator*(const Vector3f &rhs) const {
+  Vector3f operator*(const Vector3f& rhs) const {
     return Vector3f(xyz.cwiseMult(rhs.xyz));
   }
-  Vector3f &operator*=(const Vector3f &rhs) {
+  Vector3f& operator*=(const Vector3f& rhs) {
     xyz = xyz.cwiseMult(rhs.xyz);
     return *this;
   }
   //* 两个向量按位相除
-  Vector3f operator/(const Vector3f &rhs) const {
+  Vector3f operator/(const Vector3f& rhs) const {
     return Vector3f(xyz.cwiseDiv(rhs.xyz));
   }
-  Vector3f &operator/=(const Vector3f &rhs) {
+  Vector3f& operator/=(const Vector3f& rhs) {
     xyz = xyz.cwiseDiv(rhs.xyz);
     return *this;
   }
 
   //* 访问x, y, z，此处不对i进行检查
   float operator[](int i) const { return xyz[i]; }
-  float &operator[](int i) { return xyz[i]; }
+  float& operator[](int i) { return xyz[i]; }
+
+  float x() const { return xyz[0]; }
+  float y() const { return xyz[1]; }
+  float z() const { return xyz[2]; }
 
   //* 打印向量的值
   void debugPrint() const { xyz.debug_print(); }
@@ -80,33 +84,33 @@ public:
 
   //* 友函数/类声明
 public:
-  friend float dot(const Vector3f &v1, const Vector3f &v2);
-  friend Vector3f cross(const Vector3f &v1, const Vector3f &v2);
+  friend float dot(const Vector3f& v1, const Vector3f& v2);
+  friend Vector3f cross(const Vector3f& v1, const Vector3f& v2);
   friend class Point3f;
 
 private:
-  Vector3f(const vecmat::vec3f &vec) : xyz(vec) {}
+  Vector3f(const vecmat::vec3f& vec) : xyz(vec) {}
   vecmat::vec3f xyz;
 };
 
 //* 向量与标量相乘
-inline Vector3f operator*(float f, const Vector3f &v) { return v * f; }
+inline Vector3f operator*(float f, const Vector3f& v) { return v * f; }
 
 //* 两个向量点乘
-inline float dot(const Vector3f &v1, const Vector3f &v2) {
+inline float dot(const Vector3f& v1, const Vector3f& v2) {
   return vecmat::dot(v1.xyz, v2.xyz);
 }
 
 //* 两个向量叉乘
-inline Vector3f cross(const Vector3f &v1, const Vector3f &v2) {
+inline Vector3f cross(const Vector3f& v1, const Vector3f& v2) {
   return vecmat::cross(v1.xyz, v2.xyz);
 }
 
 //* 向量取反
-inline Vector3f operator-(const Vector3f &vec) { return Vector3f(.0f) - vec; }
+inline Vector3f operator-(const Vector3f& vec) { return Vector3f(.0f) - vec; }
 
 //* 向量单位化，不对0向量做特殊处理
-inline Vector3f normalize(const Vector3f &vec) {
+inline Vector3f normalize(const Vector3f& vec) {
   float len = vec.length();
   return vec / len;
 }
@@ -119,31 +123,31 @@ public:
   Point3f(float _x, float _y, float _z) : xyz(_x, _y, _z) {}
 
   //* 与向量相加
-  Point3f operator+(const Vector3f &rhs) const {
+  Point3f operator+(const Vector3f& rhs) const {
     return Point3f(xyz + rhs.xyz);
   }
-  Point3f &operator+=(const Vector3f &rhs) {
+  Point3f& operator+=(const Vector3f& rhs) {
     xyz += rhs.xyz;
     return *this;
   }
 
   //* 与向量相减
-  Point3f operator-(const Vector3f &rhs) const {
+  Point3f operator-(const Vector3f& rhs) const {
     return Point3f(xyz - rhs.xyz);
   }
-  Point3f &operator-=(const Vector3f &rhs) {
+  Point3f& operator-=(const Vector3f& rhs) {
     xyz -= rhs.xyz;
     return *this;
   }
 
   //* 与点相减
-  Vector3f operator-(const Point3f &rhs) const {
+  Vector3f operator-(const Point3f& rhs) const {
     return Vector3f(xyz - rhs.xyz);
   }
 
   //* 访问x, y, z，此处不对i进行检查
   float operator[](int i) const { return xyz[i]; }
-  float &operator[](int i) { return xyz[i]; }
+  float& operator[](int i) { return xyz[i]; }
 
   //* 打印点的值
   void debugPrint() const {
@@ -160,7 +164,7 @@ public:
   friend class Vector3f;
 
 private:
-  Point3f(const vecmat::vec3f &vec) : xyz(vec) {}
+  Point3f(const vecmat::vec3f& vec) : xyz(vec) {}
   vecmat::vec3f xyz;
 };
 
