@@ -101,6 +101,10 @@ inline float dot(const Vector3f& v1, const Vector3f& v2) {
   return vecmat::dot(v1.xyz, v2.xyz);
 }
 
+inline float absDot(const Vector3f& v1, const Vector3f& v2) {
+  return std::abs(dot(v1, v2));
+}
+
 //* 两个向量叉乘
 inline Vector3f cross(const Vector3f& v1, const Vector3f& v2) {
   return vecmat::cross(v1.xyz, v2.xyz);

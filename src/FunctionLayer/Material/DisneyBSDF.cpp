@@ -1,5 +1,5 @@
 #include "DisneyBSDF.h"
-// #include "BxDF/MicrofacetDistribution.h"
+#include "BxDF/MicrofacetDistribution.h"
 // #include "BxDF/Fresnel.h"
 // #include  "FunctionLayer/Texture/TextureFactory.h"
 // #include "FunctionLayer/Distribution/Distribution.h"
