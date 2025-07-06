@@ -12,6 +12,7 @@
 
 #include "Texture.h"
 #include "ImageTexture.h"
+#include "ConstantTexture.h"
  // #include "ProceduralTexture.h"
 
  // #include "ResourceLayer/File/FileUtils.h"
@@ -28,22 +29,22 @@ namespace  TextureFactory {
         if (textureJson.is_array()) {
             return std::make_shared <ConstantTexture<T>>(textureJson);
         }
-        if (textureJson.is_string()) {
-            auto emission = std::make_shared < ImageTexture < T, RGB3>>(
-                FileUtils::getFullPath(textureJson));
-            return emission;
-        }
-        if (textureJson.is_object()) {
-            auto type = textureJson["type"];
-            if (type == "checker") {
-                T onColor = getOptional(textureJson, "on_color", T());
-                T offColor = getOptional(textureJson, "off_color", T());
-                int resU = getOptional(textureJson, "res_u", 20);
-                int resV = getOptional(textureJson, "res_v", 20);
-                return std::make_shared<Checkerboard2D<T>>(onColor, offColor, resU, resV);
-            }
-            //todo
-        }
+        // if (textureJson.is_string()) {
+        //     auto emission = std::make_shared < ImageTexture < T, RGB3>>(
+        //         FileUtils::getFullPath(textureJson));
+        //     return emission;
+        // }
+        // if (textureJson.is_object()) {
+        //     auto type = textureJson["type"];
+        //     if (type == "checker") {
+        //         T onColor = getOptional(textureJson, "on_color", T());
+        //         T offColor = getOptional(textureJson, "off_color", T());
+        //         int resU = getOptional(textureJson, "res_u", 20);
+        //         int resV = getOptional(textureJson, "res_v", 20);
+        //         return std::make_shared<Checkerboard2D<T>>(onColor, offColor, resU, resV);
+        //     }
+        //     //todo
+        // }
         return nullptr;
     }
 

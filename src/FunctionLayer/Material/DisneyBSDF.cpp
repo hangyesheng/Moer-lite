@@ -139,7 +139,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyDiffuse& disneyBXDF
     BSDFSampleResult result;
     Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
-    result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     return result;
 }
 
@@ -178,7 +178,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyMetal& disneyBXDF) 
     Vector3f wh = disneyBXDF.distrib.Sample_wh(out, sample, alpha);
     Vector3f reflected = normalize(-out + 2 * dot(out, wh) * wh);
     result.wi = reflected;
-    result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     return result;
 }
 
@@ -231,7 +231,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyClearCoat& disneyBX
 
     Vector3f in = normalize(-out + 2 * (dot(out, wh)) * wh);
     result.wi = in;
-    result.type = BXDFType(BXDF_GLOSSY | BXDF_REFLECTION);
+    // result.type = BXDFType(BXDF_GLOSSY | BXDF_REFLECTION);
     return result;
 }
 
@@ -311,13 +311,13 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyGlass& disneyBXDF) 
     bool reflect = r < F;
     if (reflect) {
         result.wi = -out + 2 * dot(out, wh) * wh;
-        result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+        // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     }
     else {
         double eta = whDotOut < 0 ? disneyBXDF.eta : 1 / disneyBXDF.eta;
         Vector3f in = (eta * whDotOut - (whDotOut > 0 ? 1 : -1) * cosThetaT) * wh - eta * out;
         result.wi = in;
-        result.type = BXDFType(BXDF_TRANSMISSION | BXDF_GLOSSY);
+        // result.type = BXDFType(BXDF_TRANSMISSION | BXDF_GLOSSY);
     }
     return result;
 }
@@ -348,7 +348,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneySheen& disneyBXDF) 
     BSDFSampleResult result;
     Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
-    result.type = BSDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    // result.type = BSDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     return result;
 }
 

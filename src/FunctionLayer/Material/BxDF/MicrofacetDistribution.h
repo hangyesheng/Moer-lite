@@ -11,6 +11,7 @@
  */
 #pragma once
 
+#include "CoreLayer/Math/Geometry.h"
  // #include "CoreLayer/Adapter/JsonUtil.h"
 
 class MicrofacetDistribution {

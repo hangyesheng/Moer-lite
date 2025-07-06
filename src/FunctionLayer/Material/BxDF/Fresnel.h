@@ -10,8 +10,8 @@
  */
 
 #pragma once
-#include "FastMath.h"
- // #include "CoreLayer/Geometry/Geometry.h"
+ // #include "FastMath.h"
+#include "CoreLayer/Math/Geometry.h"
 
 namespace Fresnel {
 

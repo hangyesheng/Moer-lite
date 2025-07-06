@@ -63,13 +63,13 @@ Vector3f GGXDistribution::Sample_wh(const Vector3f& wo, Vector2f u, const Vector
         // Parameterization of the projected area of a hemisphere.
         double r = sqrt(u.x());
         double phi = 2 * M_PI * u.y();
-        double t1 = r * cos(phi);
-        double t2 = r * sin(phi);
+        float t1 = r * cos(phi);
+        float t2 = r * sin(phi);
         // Vertically scale the position of a sample to account for the projection.
         double s = (1 + hemisphereDirOut.z()) / 2;
         t2 = (1 - s) * sqrt(1 - t1 * t1) + s * t2;
         // Point in the disk space
-        Vector3f diskN{ t1, t2, sqrt(std::max(0.0, 1 - t1 * t1 - t2 * t2)) };
+        Vector3f diskN{ t1, t2, sqrt(std::max(0.0f, 1 - t1 * t1 - t2 * t2)) };
         // Reprojection onto hemisphere -- we get our sampled normal in hemisphere space.
         Vector3f T1 = normalize(Vector3f(-hemisphereDirOut.y(), hemisphereDirOut.x(), 0));
         Vector3f T2 = cross(hemisphereDirOut, T1);
