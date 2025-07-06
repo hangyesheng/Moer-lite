@@ -1,8 +1,9 @@
 #include "DisneyBSDF.h"
 #include "BxDF/MicrofacetDistribution.h"
-// #include "BxDF/Fresnel.h"
-// #include  "FunctionLayer/Texture/TextureFactory.h"
-// #include "FunctionLayer/Distribution/Distribution.h"
+#include "BxDF/Warp.h"
+#include "BxDF/Fresnel.h"
+#include "FunctionLayer/Texture/TextureFactory.h"
+#include "FunctionLayer/Distribution/Distribution.h"
 // #include "FastMath.h"
 
 #include <variant>
@@ -136,7 +137,7 @@ double pdfDisneyBXDFOP::operator ()(const DisneyDiffuse& disneyBXDF) {
 
 BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyDiffuse& disneyBXDF) {
     BSDFSampleResult result;
-    Vector3f in = SquareToCosineHemisphere(sample);
+    Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
     result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     return result;
@@ -223,9 +224,9 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyClearCoat& disneyBX
     double roughness = disneyBXDF.clearCoatGloss;
     double alphaG = (1 - roughness) * 0.1 + roughness * 0.001;
     double alphaG2 = alphaG * alphaG;
-    double cosTheta = sqrt((1 - pow(alphaG2, 1 - sample.x)) / (1 - alphaG2));
+    double cosTheta = sqrt((1 - pow(alphaG2, 1 - sample.x())) / (1 - alphaG2));
     double sinTheta = sqrt(1 - cosTheta * cosTheta);
-    double phi = sample.y * M_PI * 2;
+    double phi = sample.y() * M_PI * 2;
     Vector3f wh = Vector3f(sinTheta * cos(phi), sinTheta * sin(phi), cosTheta);
 
     Vector3f in = normalize(-out + 2 * (dot(out, wh)) * wh);
@@ -345,7 +346,7 @@ double pdfDisneyBXDFOP::operator ()(const DisneySheen& disneyBXDF) {
 
 BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneySheen& disneyBXDF) {
     BSDFSampleResult result;
-    Vector3f in = SquareToCosineHemisphere(sample);
+    Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
     result.type = BSDFType(BXDF_REFLECTION | BXDF_GLOSSY);
     return result;
@@ -447,11 +448,11 @@ DisneyBSDF::DisneyBSDF(const Spectrum& baseColor, double specularTransmission, d
 
 std::shared_ptr <BSDF> DisneyMaterial::computeBSDF(const Intersection& intersect) const {
     return std::make_shared <DisneyBSDF>(
-        baseColor->eval(intersect), specularTransmission->eval(intersect),
-        metallic->eval(intersect), subsurface->eval(intersect), specular->eval(intersect),
-        roughness->eval(intersect), specularTint->eval(intersect),
-        anisotropic->eval(intersect), sheen->eval(intersect), sheenTint->eval(intersect),
-        clearCoat->eval(intersect), clearCoatGloss->eval(intersect), eta);
+        baseColor->evaluate(intersect), specularTransmission->evaluate(intersect),
+        metallic->evaluate(intersect), subsurface->evaluate(intersect), specular->evaluate(intersect),
+        roughness->evaluate(intersect), specularTint->evaluate(intersect),
+        anisotropic->evaluate(intersect), sheen->evaluate(intersect), sheenTint->evaluate(intersect),
+        clearCoat->evaluate(intersect), clearCoatGloss->evaluate(intersect), eta);
 
 }
 
@@ -469,7 +470,6 @@ DisneyMaterial::DisneyMaterial(const Json& json) : Material(json) {
     clearCoat = TextureFactory::LoadTexture<double>(getChild(json, "clear_coat"), 0);
     clearCoatGloss = TextureFactory::LoadTexture<double>(getChild(json, "clear_coat_gloss"), 0);
     eta = getOptional(json, "eta", 1.5);
-    twoSideShading = false;
 }
 
 

@@ -12,61 +12,66 @@ public:
 
   SpectrumRGB(Vector3f _rgb) : rgb(_rgb) {}
 
-  SpectrumRGB operator+(const SpectrumRGB &rhs) const {
+  SpectrumRGB operator+(const SpectrumRGB& rhs) const {
     return SpectrumRGB(rgb + rhs.rgb);
   }
 
-  SpectrumRGB &operator+=(const SpectrumRGB &rhs) {
+  SpectrumRGB& operator+=(const SpectrumRGB& rhs) {
     rgb += rhs.rgb;
     return *this;
   }
 
-  SpectrumRGB operator-(const SpectrumRGB &rhs) const {
+  SpectrumRGB operator-(const SpectrumRGB& rhs) const {
     return SpectrumRGB(rgb - rhs.rgb);
   }
 
-  SpectrumRGB &operator-=(const SpectrumRGB &rhs) {
+  SpectrumRGB& operator-=(const SpectrumRGB& rhs) {
     rgb -= rhs.rgb;
     return *this;
   }
 
-  SpectrumRGB operator*(const SpectrumRGB &rhs) const {
+  SpectrumRGB operator*(const SpectrumRGB& rhs) const {
     return SpectrumRGB(rgb * rhs.rgb);
   }
 
-  SpectrumRGB &operator*=(const SpectrumRGB &rhs) {
+  SpectrumRGB& operator*=(const SpectrumRGB& rhs) {
     rgb *= rhs.rgb;
     return *this;
   }
 
   SpectrumRGB operator*(float f) const { return SpectrumRGB(rgb * f); }
 
-  SpectrumRGB &operator*=(float f) {
+  SpectrumRGB& operator*=(float f) {
     rgb *= f;
     return *this;
   }
 
-  SpectrumRGB operator/(const SpectrumRGB &rhs) const {
+  SpectrumRGB operator/(const SpectrumRGB& rhs) const {
     return SpectrumRGB(rgb / rhs.rgb);
   }
 
-  SpectrumRGB &operator/=(const SpectrumRGB &rhs) {
+  SpectrumRGB& operator/=(const SpectrumRGB& rhs) {
     rgb /= rhs.rgb;
     return *this;
   }
 
   SpectrumRGB operator/(float f) const { return SpectrumRGB(rgb / f); }
 
-  SpectrumRGB &operator/=(float f) {
+  SpectrumRGB& operator/=(float f) {
     rgb /= f;
     return *this;
   }
 
   float operator[](int i) const { return rgb[i]; }
 
-  float &operator[](int i) { return rgb[i]; }
+  float& operator[](int i) { return rgb[i]; }
 
   bool isZero() const { return rgb.isZero(); }
+
+  double luminance() const {
+    const double YWeight[3] = { 0.212671f, 0.715160f, 0.072169f };
+    return YWeight[0] * rgb[0] + YWeight[1] * rgb[1] + YWeight[2] * rgb[2];
+  }
 
   void debugPrint() const {
     printf("[rgb](");
@@ -81,14 +86,23 @@ private:
   Vector3f rgb;
 };
 
-inline SpectrumRGB operator*(float f, const SpectrumRGB &spectrum) {
+inline SpectrumRGB operator*(float f, const SpectrumRGB& spectrum) {
   return spectrum * f;
 }
 
-inline Vector3f toVec3(const SpectrumRGB &spectrum) {
-  return Vector3f{spectrum[0], spectrum[1], spectrum[2]};
+inline Vector3f toVec3(const SpectrumRGB& spectrum) {
+  return Vector3f{ spectrum[0], spectrum[1], spectrum[2] };
 }
 
-inline SpectrumRGB toSpectrum(const Vector3f &vec) {
+inline SpectrumRGB toSpectrum(const Vector3f& vec) {
   return SpectrumRGB(vec[0], vec[1], vec[2]);
 }
+
+inline SpectrumRGB sqrt(const SpectrumRGB& spectrum) {
+  SpectrumRGB result;
+  for (int i = 0; i < 3; ++i) {
+    result[i] = std::sqrt(spectrum[i]);
+  }
+  return result;
+}
+

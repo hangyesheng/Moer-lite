@@ -13,6 +13,7 @@ struct BSDFSampleResult {
 
 class BSDF {
 public:
+  BSDF() = default;
   BSDF(const Vector3f& _normal, const Vector3f& _tangent,
     const Vector3f& _bitangent) {
     normal = _normal;
