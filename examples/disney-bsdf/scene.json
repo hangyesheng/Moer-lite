@@ -11,14 +11,14 @@
         "type": "pinhole",
         "transform": {
             "position": [
-                23.895,
-                11.2207,
-                0.0400773
+                -7,
+                5,
+                0
             ],
             "lookAt": [
-                -0.953633,
-                2.17253,
-                1.0972613
+                -2,
+                0,
+                -3
             ],
             "up": [
                 0,
@@ -71,7 +71,7 @@
                     "translate": [
                         -2,
                         0,
-                        -3
+                        -1
                     ]
                 }
             },
@@ -103,7 +103,7 @@
                     "translate": [
                         -2,
                         0,
-                        0
+                        -3
                     ]
                 }
             },
@@ -135,295 +135,7 @@
                     "translate": [
                         -2,
                         0,
-                        3
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.75,
-                        0.83,
-                        0.46
-                    ],
-                    "specular_transmission": 0.5,
-                    "metallic": 0.1,
-                    "subsurface": 0.0,
-                    "specular": 1.0,
-                    "roughness": 0.5,
-                    "specular_tint": 0.5,
-                    "anisotropic": 0.0,
-                    "sheen": 0.0,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.0,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney4",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        -2,
-                        0,
-                        6
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.5,
-                        0.23,
-                        0.84
-                    ],
-                    "specular_transmission": 0.0,
-                    "metallic": 0.5,
-                    "subsurface": 1.0,
-                    "specular": 1.0,
-                    "roughness": 0.5,
-                    "specular_tint": 0.5,
-                    "anisotropic": 0.1,
-                    "sheen": 0.5,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.5,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney5",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        2,
-                        0,
-                        -3
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.5,
-                        0.9,
-                        0.84
-                    ],
-                    "specular_transmission": 1.0,
-                    "metallic": 0.0,
-                    "subsurface": 1.0,
-                    "specular": 1.0,
-                    "roughness": 0.1,
-                    "specular_tint": 0.5,
-                    "anisotropic": 0.1,
-                    "sheen": 0.5,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.5,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney6",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        2,
-                        0,
-                        0
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.9,
-                        0.9,
-                        0.84
-                    ],
-                    "specular_transmission": 0.0,
-                    "metallic": 1.0,
-                    "subsurface": 1.0,
-                    "specular": 1.0,
-                    "roughness": 0.1,
-                    "specular_tint": 0.5,
-                    "anisotropic": 0.1,
-                    "sheen": 0.5,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.5,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney7",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        2,
-                        0,
-                        3
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.2,
-                        0.2,
-                        0.3
-                    ],
-                    "specular_transmission": 0.5,
-                    "metallic": 0.5,
-                    "subsurface": 0.5,
-                    "specular": 0.5,
-                    "roughness": 0.2,
-                    "specular_tint": 0.5,
-                    "anisotropic": 0.1,
-                    "sheen": 0.5,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.5,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney8",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        2,
-                        0,
-                        6
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.5,
-                        0.6,
-                        0.7
-                    ],
-                    "specular_transmission": 0.2,
-                    "metallic": 0.8,
-                    "subsurface": 0.2,
-                    "specular": 0.7,
-                    "roughness": 0.1,
-                    "specular_tint": 0.0,
-                    "anisotropic": 0.3,
-                    "sheen": 0.5,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.5,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney9",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        6,
-                        0,
-                        -3
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.9,
-                        0.2,
-                        0.3
-                    ],
-                    "specular_transmission": 0.0,
-                    "metallic": 0.0,
-                    "subsurface": 0.8,
-                    "specular": 0.3,
-                    "roughness": 0.1,
-                    "specular_tint": 0.0,
-                    "anisotropic": 0.0,
-                    "sheen": 1.0,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 1.0,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney10",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        6,
-                        0,
-                        0
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.3,
-                        0.5,
-                        0.3
-                    ],
-                    "specular_transmission": 1.0,
-                    "metallic": 0.9,
-                    "subsurface": 0.8,
-                    "specular": 0.3,
-                    "roughness": 0.2,
-                    "specular_tint": 0.0,
-                    "anisotropic": 0.3,
-                    "sheen": 1.0,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 1.0,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney11",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        6,
-                        0,
-                        3
-                    ]
-                }
-            },
-            {
-                "type": "triangle",
-                "file": "models/bunny.obj",
-                "material": {
-                    "base_color": [
-                        0.1,
-                        0.1,
-                        0.3
-                    ],
-                    "specular_transmission": 0.5,
-                    "metallic": 0.5,
-                    "subsurface": 0.5,
-                    "specular": 0.3,
-                    "roughness": 0.9,
-                    "specular_tint": 0.0,
-                    "anisotropic": 0.1,
-                    "sheen": 0.0,
-                    "sheen_tint": 0.5,
-                    "clear_coat": 0.0,
-                    "clear_coat_gloss": 0.5,
-                    "eta": 1.5,
-                    "name": "disney12",
-                    "type": "disney"
-                },
-                "transform": {
-                    "translate": [
-                        6,
-                        0,
-                        6
+                        -5
                     ]
                 }
             },
