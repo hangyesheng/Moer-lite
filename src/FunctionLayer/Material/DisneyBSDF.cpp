@@ -140,6 +140,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyDiffuse& disneyBXDF
     Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
     // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    result.type = BSDFType::Specular;
     return result;
 }
 
@@ -179,6 +180,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyMetal& disneyBXDF) 
     Vector3f reflected = normalize(-out + 2 * dot(out, wh) * wh);
     result.wi = reflected;
     // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    result.type = BSDFType::Specular;
     return result;
 }
 
@@ -232,6 +234,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyClearCoat& disneyBX
     Vector3f in = normalize(-out + 2 * (dot(out, wh)) * wh);
     result.wi = in;
     // result.type = BXDFType(BXDF_GLOSSY | BXDF_REFLECTION);
+    result.type = BSDFType::Specular;
     return result;
 }
 
@@ -312,12 +315,14 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneyGlass& disneyBXDF) 
     if (reflect) {
         result.wi = -out + 2 * dot(out, wh) * wh;
         // result.type = BXDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+        result.type = BSDFType::Specular;
     }
     else {
         double eta = whDotOut < 0 ? disneyBXDF.eta : 1 / disneyBXDF.eta;
         Vector3f in = (eta * whDotOut - (whDotOut > 0 ? 1 : -1) * cosThetaT) * wh - eta * out;
         result.wi = in;
         // result.type = BXDFType(BXDF_TRANSMISSION | BXDF_GLOSSY);
+        result.type = BSDFType::Specular;
     }
     return result;
 }
@@ -349,6 +354,7 @@ BSDFSampleResult sampleDisneyBXDFOP::operator ()(const DisneySheen& disneyBXDF) 
     Vector3f in = squareToCosineHemisphere(sample);
     result.wi = in;
     // result.type = BSDFType(BXDF_REFLECTION | BXDF_GLOSSY);
+    result.type = BSDFType::Specular;
     return result;
 }
 
